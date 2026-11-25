@@ -1,34 +1,38 @@
-# Индекс навыков
+# Индекс навыков для участниц: только видеомонтаж
 
-Статусы: **AVAILABLE** — SKILL.md лежит в рабочей директории и обнаруживается Codex; зависимости и фактическая работа ещё могут требовать проверки. **IMPORTED_REFERENCE** — исходные материалы сохранены в third-party. **CATALOG_ONLY** — каталог внешних проектов, не Skill. **PLANNED** — предстоит разработать. **TESTED** — прошёл реальный тест в конкретной среде. На данный момент ни один внешний движок/Skill не помечен TESTED.
+В этой библиотеке оставлены только навыки и технические материалы, относящиеся к созданию и монтажу видео. Личные брендбуки, персональные правила оформления и авторские проекты Полины сюда не входят.
 
-## Repo-local Skills
+## Навыки
 
-| Категория | Skill | Статус |
+| Направление | Skill | Для чего нужен |
 |---|---|---|
-| Remotion | remotion-best-practices | AVAILABLE |
-| GSAP | gsap-core, gsap-timeline, gsap-plugins, gsap-react, gsap-performance, gsap-scrolltrigger, gsap-utils, gsap-frameworks | AVAILABLE |
-| HyperFrames | hyperframes-captions-overlay, hyperframes-motion-doctrine, hyperframes-seam-craft | AVAILABLE |
-| Motion Design | howseen-motion-design | AVAILABLE |
-| Product Motion | product-launch-motion-legacy, product-launch-motion-v2 | AVAILABLE |
-| Orchestration | video-director | AVAILABLE |
-| Pre-production | storyboard-generator | AVAILABLE |
-| Quality | visual-quality | AVAILABLE |
-| Авторский формат | mult-marketing | AVAILABLE |
+| Remotion | remotion-best-practices | Создание и рендер видео-композиций на React |
+| GSAP | gsap-core | Базовая работа с GSAP |
+| GSAP | gsap-frameworks | Интеграция GSAP с фреймворками |
+| GSAP | gsap-performance | Производительность анимаций |
+| GSAP | gsap-plugins | Работа с плагинами GSAP |
+| GSAP | gsap-react | GSAP в React |
+| GSAP | gsap-scrolltrigger | Анимации по прокрутке |
+| GSAP | gsap-timeline | Таймлайны и последовательности |
+| GSAP | gsap-utils | Вспомогательные функции GSAP |
+| HyperFrames | hyperframes-captions-overlay | Субтитры и текстовые слои |
+| HyperFrames | hyperframes-motion-doctrine | Принципы motion-графики |
+| HyperFrames | hyperframes-seam-craft | Стыки, переходы и монтажные соединения |
+| Motion Design | howseen-motion-design | Анализ и воспроизведение монтажной механики и motion-приёмов |
+| Product Motion | product-launch-motion-legacy | Специализированный motion workflow |
+| Product Motion | product-launch-motion-v2 | Специализированный motion workflow, версия 2 |
+| Предпродакшен | storyboard-generator | Подготовка раскадровки |
+| Режиссура | video-director | Планирование видеопроизводства |
+| Контроль качества | visual-quality | Проверка визуального результата |
 
-## Plugin package
-- Portable plugin: `plugins/matveeva-video/`
-- Primary bundled skill: `polly-video-studio`
-- Specialist skills are bundled alongside it.
-- Plugin package created, but not yet imported/synced into ChatGPT account or submitted to the universal plugin directory.
+## Важные границы
 
-## Catalogues and pending work
-| Source / task | Status | Notes |
-|---|---|---|
-| awesome-claude-video-skills | CATALOG_ONLY | Discover individual projects; audit each separately |
-| User archive `Скиллы 1.zip` | NOT_FULLY_IMPORTED | ZIP contains 32 files including a Remotion SKILL.md, references, and TSX examples. Official Remotion Best Practices is included separately; exact ZIP contents still need a dedicated import pass. |
-| 13 editing techniques discussed earlier | PLANNED | Exact list/source examples not found in the accessible files; do not invent names |
-| Platform safe-zone reference | PLANNED | Maintain platform-specific, dated measurements |
-| Contact-sheet renderer | PLANNED | Need implementation and real test |
+- Здесь нет мульт-маркетинга и его персонажей/сценариев.
+- Здесь нет личного видеобрендбука Полины и её цветовых/шрифтовых правил.
+- Участницы применяют собственные брендбуки и визуальные предпочтения.
+- Skill не равен установленной программе: перед рендером Codex проверяет наличие зависимостей и среды.
+- Не помечать навык как протестированный, пока он не прошёл реальную проверку в конкретной среде.
 
-Never label a skill TESTED without a named environment, versions, and recorded test result.
+## Отдельно загруженный архив Remotion
+
+Архив `Скиллы 1.zip` содержит `remotion/SKILL.md` и справочные материалы Remotion (анимации, звук, субтитры, переходы, тайминг, видео/изображения, 3D и примеры TSX). Это техническая документация Remotion, не личный брендбук. Её нужно подключать как справочные материалы к Remotion Skill, а не смешивать с авторскими правилами оформления.
