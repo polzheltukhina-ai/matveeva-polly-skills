@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "matveeva-video-studio",
+  "version": "0.1.0",
+  "description": "Набор навыков для анализа референсов, планирования и создания коротких видео, motion design, Remotion, GSAP, HyperFrames и контроля качества.",
+  "author": {
+    "name": "Polina Matveeva",
+    "url": "https://github.com/polzheltukhina-ai"
+  },
+  "repository": "https://github.com/polzheltukhina-ai/matveeva-polly-skills",
+  "keywords": ["video-editing", "reels", "shorts", "motion-design", "remotion", "gsap", "hyperframes", "storyboard"]
+}
