@@ -1,47 +1,34 @@
 # Индекс навыков
 
-## Статусы
+Статусы: **AVAILABLE** — SKILL.md лежит в рабочей директории и обнаруживается Codex; зависимости и фактическая работа ещё могут требовать проверки. **IMPORTED_REFERENCE** — исходные материалы сохранены в third-party. **CATALOG_ONLY** — каталог внешних проектов, не Skill. **PLANNED** — предстоит разработать. **TESTED** — прошёл реальный тест в конкретной среде. На данный момент ни один внешний движок/Skill не помечен TESTED.
 
-- **AVAILABLE** — файл SKILL.md находится в `.agents/skills` и доступен Codex для обнаружения. Это не означает, что зависимости установлены или навык прошёл тест.
-- **IMPORTED_REFERENCE** — исходные материалы сохранены в `third-party/`, но не являются самостоятельным запускаемым Skill.
-- **CATALOG_ONLY** — каталог внешних проектов для поиска, не исполняемый Skill.
-- **PLANNED** — авторский навык ещё предстоит разработать.
-- **TESTED** — прошёл реальный тест в указанной среде с зафиксированными версиями и результатом. Пока ни один навык не имеет этого статуса.
+## Repo-local Skills
 
-## Skills в репозитории
-
-| Категория | Skill | Источник | Статус | Примечание |
-|---|---|---|---|---|
-| Remotion | remotion-best-practices | remotion-dev/skills | AVAILABLE | Требуется проверка зависимостей и работы в Cloud |
-| GSAP | gsap-core | greensock/gsap-skills | AVAILABLE | GSAP core |
-| GSAP | gsap-timeline | greensock/gsap-skills | AVAILABLE | Timeline |
-| GSAP | gsap-plugins | greensock/gsap-skills | AVAILABLE | Plugins |
-| GSAP | gsap-react | greensock/gsap-skills | AVAILABLE | React integration |
-| GSAP | gsap-performance | greensock/gsap-skills | AVAILABLE | Performance |
-| GSAP | gsap-scrolltrigger | greensock/gsap-skills | AVAILABLE | ScrollTrigger |
-| GSAP | gsap-utils | greensock/gsap-skills | AVAILABLE | Utilities |
-| GSAP | gsap-frameworks | greensock/gsap-skills | AVAILABLE | Framework integrations |
-| HyperFrames | hyperframes-captions-overlay | heygen-com/hyperframes | AVAILABLE | Captions overlay |
-| HyperFrames | hyperframes-motion-doctrine | heygen-com/hyperframes | AVAILABLE | Motion principles |
-| HyperFrames | hyperframes-seam-craft | heygen-com/hyperframes | AVAILABLE | Seam and transition craft |
-| Motion Design | howseen-motion-design | howseen-ai/claude-motion-design | AVAILABLE | HTML + Playwright + FFmpeg; dependencies required |
-| Product Motion | product-launch-motion-legacy | AbubakrChan/product-launch-motion | AVAILABLE | Legacy voice-led workflow |
-| Product Motion | product-launch-motion-v2 | AbubakrChan/product-launch-motion | AVAILABLE | Product launch / music-led workflow |
-| Orchestration | video-director | Matveeva Polly | AVAILABLE | Request analysis and skill selection |
-| Pre-production | storyboard-generator | Matveeva Polly | AVAILABLE | Timecoded storyboard |
-| Quality | visual-quality | Matveeva Polly | AVAILABLE | Visual standards and QA |
-
-## Каталоги, пользовательские материалы и планы
-
-| Source / Skill | Status | Use |
+| Категория | Skill | Статус |
 |---|---|---|
-| awesome-claude-video-skills | CATALOG_ONLY | Каталог для поиска; каждый проект нужно отдельно проверять |
-| Пользовательский архив Remotion («Скиллы 1.zip») | NOT_IMPORTED | Архив был изучен в рамках подготовки starter, но его полное содержимое пока не опубликовано в этом GitHub-репозитории |
-| 13 creative editing techniques | PLANNED | Оформить отдельными Skills после сверки с исходным материалом урока |
-| 13 motion/effect techniques | PLANNED | Хранить отдельно от creative editing techniques |
-| platform-safe-zones | PLANNED | Платформенные рекомендации с датами и источниками |
-| storyboard contact-sheet renderer | PLANNED | Нужна реализация и тестирование генерации визуальной раскадровки |
+| Remotion | remotion-best-practices | AVAILABLE |
+| GSAP | gsap-core, gsap-timeline, gsap-plugins, gsap-react, gsap-performance, gsap-scrolltrigger, gsap-utils, gsap-frameworks | AVAILABLE |
+| HyperFrames | hyperframes-captions-overlay, hyperframes-motion-doctrine, hyperframes-seam-craft | AVAILABLE |
+| Motion Design | howseen-motion-design | AVAILABLE |
+| Product Motion | product-launch-motion-legacy, product-launch-motion-v2 | AVAILABLE |
+| Orchestration | video-director | AVAILABLE |
+| Pre-production | storyboard-generator | AVAILABLE |
+| Quality | visual-quality | AVAILABLE |
+| Авторский формат | mult-marketing | AVAILABLE |
 
-## Правило качества
+## Plugin package
+- Portable plugin: `plugins/matveeva-video/`
+- Primary bundled skill: `polly-video-studio`
+- Specialist skills are bundled alongside it.
+- Plugin package created, but not yet imported/synced into ChatGPT account or submitted to the universal plugin directory.
 
-Никогда не помечай Skill как TESTED без реального теста в конкретной среде (Codex Desktop или Codex Cloud), с зафиксированными версиями и результатом. Не обещай, что любой Skill автоматически заработает в любом окружении.
+## Catalogues and pending work
+| Source / task | Status | Notes |
+|---|---|---|
+| awesome-claude-video-skills | CATALOG_ONLY | Discover individual projects; audit each separately |
+| User archive `Скиллы 1.zip` | NOT_FULLY_IMPORTED | ZIP contains 32 files including a Remotion SKILL.md, references, and TSX examples. Official Remotion Best Practices is included separately; exact ZIP contents still need a dedicated import pass. |
+| 13 editing techniques discussed earlier | PLANNED | Exact list/source examples not found in the accessible files; do not invent names |
+| Platform safe-zone reference | PLANNED | Maintain platform-specific, dated measurements |
+| Contact-sheet renderer | PLANNED | Need implementation and real test |
+
+Never label a skill TESTED without a named environment, versions, and recorded test result.
