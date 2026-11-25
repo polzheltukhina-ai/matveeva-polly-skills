@@ -1,22 +1,29 @@
 # Скиллы Матвеевой Полины
 
-Библиотека навыков и правил для AI-видеопродакшена: Remotion, GSAP, HyperFrames, motion design, субтитры, анализ референсов и контроль качества.
+Библиотека навыков и правил для AI-видеопродакшена: анализ референсов, монтажные ТЗ, раскадровки, субтитры, Remotion, GSAP, HyperFrames, motion design и контроль качества.
 
 ## Быстрый старт
-1. Создайте собственную копию через **Use this template → Create a new repository** (функция Template должна быть включена владельцем).
+1. Создайте собственную копию через **Использовать этот шаблон → Создать новый репозиторий**.
 2. Подключите GitHub к Codex.
-3. Для Codex Desktop клонируйте свой репозиторий локально.
-4. Для Codex Cloud выберите свой репозиторий и создайте Cloud Environment.
-5. Попросите Codex прочитать `AGENTS.md`, `SKILL-INDEX.md` и навыки в `.agents/skills`.
-6. Перед финальным рендером просмотрите раскадровку и подтвердите её.
+3. Для Codex Desktop/CLI откройте или клонируйте свою копию репозитория.
+4. Для Codex Cloud выберите репозиторий и настройте Cloud Environment.
+5. Codex обнаруживает repo-local Skills в `.agents/skills/`; если новые Skills не появились, обновите рабочую копию или перезапустите Codex.
+6. Для ChatGPT mobile используйте установленный plugin, содержащий Skills. Одна только папка `.agents/skills` в GitHub не делает навыки доступными в мобильном ChatGPT.
 
-## Что здесь лежит
-- `AGENTS.md` — обязательные правила AI-видеопродакшена.
-- `.agents/skills/` — навыки для Codex.
+## Два способа использования
+- **Codex:** repo-local skills в `.agents/skills/` + правила в `AGENTS.md`.
+- **ChatGPT / Codex plugin:** пакет `plugins/matveeva-video/` с manifest `plugin.json` и навыками в `skills/`.
+
+Пакет плагина подготовлен в репозитории, но его публикация в универсальном каталоге OpenAI ещё не выполнена. Для ChatGPT mobile нужен импорт/синхронизация плагина из GitHub, если функция доступна в вашем аккаунте, либо официальная публикация после проверки.
+
+## Структура
+- `AGENTS.md` — обязательные правила для Codex в этом репозитории.
+- `.agents/skills/` — Skills, которые Codex обнаруживает в репозитории.
+- `.agents/plugins/marketplace.json` — локальный каталог плагинов для ChatGPT Desktop/Codex Desktop.
+- `plugins/matveeva-video/` — portable plugin package для ChatGPT и Codex.
 - `SKILL-INDEX.md` — каталог и статус навыков.
-- `HOW-TO-CHOOSE.md` — алгоритм выбора навыков.
 - `SOURCES.md` — происхождение, авторство и лицензии.
-- `docs/` — инструкции участницам.
+- `docs/` — брендбуки и инструкции.
 - `tests/` — чек-листы качества.
 
 ## Важно
