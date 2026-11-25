@@ -1,13 +1,7 @@
-# Matveeva Video Studio
+# Video Editing Skills
 
-Plugin package for ChatGPT and Codex, containing the video production skills maintained in the Matveeva Polly library.
+This package contains only technical skills for video editing and motion production: Remotion, GSAP, HyperFrames, reference analysis, storyboarding, video direction, and visual QA.
 
-## Package contents
-- `skills/polly-video-studio` — primary workflow and production standards.
-- `skills/remotion-best-practices`, `skills/gsap-*`, `skills/hyperframes-*`, `skills/howseen-motion-design`, `skills/product-launch-motion-*` — specialist workflows.
-- `skills/mult-marketing` — author's long-form animation workflow for the «Мульт-маркетинг» format.
+It deliberately excludes personal brandbooks, the author's visual identity, and the «Мульт-маркетинг» project. Users should apply their own brand styles.
 
-## Important
-This is a packaged plugin source, not a published universal-directory listing. To use the skills in ChatGPT mobile, the plugin must be imported/synced through a supported GitHub plugin workflow or submitted and approved for the universal plugin directory. Codex repo-local skills are also maintained separately in the repository's `.agents/skills/`.
-
-Do not assume that every bundled skill's runtime dependencies are available. Check the active environment before executing render workflows.
+The package source is maintained in this repository. Its availability in a ChatGPT app depends on importing/syncing it through a supported plugin workflow; a GitHub folder alone does not automatically install it in ChatGPT mobile.
