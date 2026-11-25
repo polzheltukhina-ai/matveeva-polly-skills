@@ -1,6 +1,0 @@
-interface:
-  display_name: "Polly Video Studio"
-  short_description: "Планирование и монтаж видео с motion design"
-  default_prompt: "Проанализируй моё видео и подготовь план монтажа с раскадровкой. Выбери подходящие навыки из библиотеки Matveeva Polly."
-policy:
-  allow_implicit_invocation: true
