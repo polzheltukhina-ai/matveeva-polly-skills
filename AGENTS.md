@@ -1,33 +1,50 @@
 # AGENTS.md — Matveeva Polly Video Skills
 
 ## Goal
-Create modern, aesthetic, dynamic videos for Reels, Shorts, TikTok, and YouTube. Support beginners by explaining decisions plainly. The repository contains skills, references, and a packaged plugin; it is not itself a rendering engine.
+Create clear, modern videos for Reels, Shorts, TikTok, and YouTube. Explain decisions plainly for beginners. This repository contains skills and references; it is not itself a rendering engine.
 
-## Mandatory workflow
-1. Identify deliverable, platform, aspect ratio, duration, source files, and reference.
-2. Inspect the actual source media and repository files. Never invent speech, visuals, timecodes, or source assets.
-3. Read SKILL-INDEX.md and inspect the relevant .agents/skills/<name>/SKILL.md files.
-4. Select the smallest compatible set of skills. Prefer one primary rendering engine per project.
-5. Explain selected skills and dependencies.
-6. Prepare a timecoded edit plan and visual storyboard/contact sheet from actual source frames where possible.
-7. Obtain approval before final rendering unless the user explicitly waives approval.
-8. Render a short proof for complex motion, inspect it, then render the final output.
-9. Verify the exported file and report exactly what was and was not checked.
+## Workflow
+1. Identify the deliverable, platform, aspect ratio, target duration, source media, reference, and requested speech edits.
+2. Verify the actual files available in the current workspace before analysis. Prefer attached/current-workspace files and discoverable project files over guessed paths or filenames.
+3. If a file is missing or multiple candidates are ambiguous, report the candidates and ask one focused question. Never silently substitute a similarly named file.
+4. Inspect the actual source media. Never invent speech, visuals, timecodes, or source assets.
+5. Read SKILL-INDEX.md and only the relevant skill instructions. Select the smallest compatible set and one primary rendering engine.
+6. Reuse existing project setup, dependencies, transcripts, edit plans, assets, and components when their source inputs and requirements have not changed.
+7. Analyze the reference and source once. Save reusable outputs (transcript, edit decision list, reference analysis, storyboard, configuration) in the project.
+8. Present the proposed edit plan and resolve only decisions that cannot be inferred safely.
+9. Obtain approval before final rendering unless the user explicitly waives approval. For complex or unproven effects, render a short representative proof first.
+10. Verify the final export and state exactly which checks were automated, visually inspected, listened to, or not performed.
 
-## Visual quality
-- Preserve source color, exposure, skin tones, and sound unless changes are requested.
-- Keep faces, hands, and meaningful gestures clear.
-- Use contemporary, readable typography and strong contrast.
-- Avoid heavy strokes, opaque caption slabs, clutter, and dated effects unless requested.
-- Use subtle shadow or minimal outline only when needed for readability.
-- Motion should support meaning, rhythm, or a sound event, not decorate randomly.
-- Apply platform-specific safe zones; do not invent exact measurements.
+## Source-footage and speech-edit decisions
+Do not assume every talking-head source is already clean or that every source needs cutting. Establish the requested treatment explicitly:
+- Preserve the complete original take unchanged.
+- Remove only long pauses.
+- Remove pauses plus false starts, repeated words, filler words, or stumbles.
+- Remove specified sections or select the strongest takes.
+- Reorder sections only when explicitly requested and supported by the source.
+- Other user-defined treatment.
 
-## Speech and sound
-- Keep the original meaning and wording.
-- Remove pauses, repetitions, or stumbles only when requested or approved.
-- Do not add music/SFX unless requested or approved.
-- Verify audio continuity, sync, clipping, and intelligibility.
+If the user has not specified, inspect the source and recommend a conservative edit policy with examples/timecodes; ask for approval before destructive or meaning-changing cuts. Do not remove every natural pause. Preserve sentence meaning, breath, emphasis, and conversational rhythm. Never rewrite spoken wording in captions to conceal an edit. Keep a source-to-output edit decision list with exact source in/out timecodes and reasons. Use audio/video cuts consistently and add suitable short audio fades/crossfades where needed to avoid clicks. Do not time-stretch or alter voice tone unless requested.
+
+## Visual quality and fidelity
+- Treat the approved reference and user style guide as constraints, not loose inspiration.
+- Separate observed reference facts from uncertain estimates.
+- Preserve source color, exposure, skin tones, and image quality unless changes are requested.
+- Keep faces, headroom, hands, and meaningful gestures visible. Do not crop a face to fit a frame.
+- If a subject must extend beyond a frame boundary, use a technically appropriate foreground mask/segmentation only when the effect is approved and feasible; preserve the original subject appearance.
+- Do not add unapproved backgrounds, caption plates, strokes, shadows, gradients, frames, stickers, music, or sound effects.
+- Motion must support meaning, rhythm, or an approved sound event.
+- Use the user's stated safe zones and typography. Do not invent exact measurements when unspecified.
+
+## Environment and resource efficiency
+- Check only the dependencies needed for the selected engine and requested effects.
+- Do not perform a full environment inventory on every new video. Recheck only when setup is new, changed, or failing.
+- A skill file does not install its runtime dependencies.
+- Do not install packages or switch engines without a concrete need and user awareness.
+- Do not repeat transcription, reference analysis, contact sheets, or setup checks when source files and relevant settings are unchanged and valid saved outputs exist.
+- Before editing, inspect the current project and reuse working components. Make the smallest targeted change.
+- For local fixes, render only the affected section when technically reliable; render the complete final export after approval.
+- Avoid duplicate renders, redundant intermediate files, unnecessary parallel heavy processes, and speculative effect experiments.
 
 ## Engine selection
 - Remotion: React-driven video compositions, captions, sequences, and rendering.
@@ -38,11 +55,13 @@ Create modern, aesthetic, dynamic videos for Reels, Shorts, TikTok, and YouTube.
 - mult-marketing: only for the author's animated family-character series.
 Do not combine engines without a clear technical reason.
 
-## Environment honesty
-- Check actual Node, package manager, FFmpeg, browser, fonts, codecs, and installed packages before rendering.
-- A skill file does not install its runtime dependencies.
-- Never claim a skill is tested or available in Cloud without a real check in that environment.
-- Never claim an export is complete until the output file exists and playback has been verified.
+## Environment honesty and QA
+- Verify the actual runtime, packages, fonts, codecs, and tools required by the chosen workflow.
+- Never claim a skill is installed or tested without checking the current environment.
+- Never claim an export is complete until the output file exists and decodes.
+- Automated frame/contact-sheet checks are not equivalent to continuous human viewing. Audio correlation is not equivalent to listening.
+- Report separate statuses for technical validation, visual inspection, and audio listening. Flag uncertain transcript words for human confirmation.
+- Check export dimensions, frame rate, codec, duration, full-file decoding, subtitle timing/safe zones, audio sync/continuity/clipping, and requested visual constraints as applicable.
 
 ## Export
 Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 9:16, 30 fps, while preserving source FPS when appropriate.
