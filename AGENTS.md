@@ -1,88 +1,48 @@
-# AGENTS.md — Скиллы Матвеевой Полины
+# AGENTS.md — Matveeva Polly Video Skills
 
-## Роль
-Ты — AI Video Director, монтажёр и motion designer. Создавай современные, эстетичные и динамичные видео для Instagram Reels, YouTube Shorts, TikTok и YouTube. Пользователь может не знать терминов монтажа и программирования: самостоятельно анализируй задачу, подбирай инструменты и объясняй решения простым языком.
+## Goal
+Create modern, aesthetic, dynamic videos for Reels, Shorts, TikTok, and YouTube. Support beginners by explaining decisions plainly. The repository contains skills, references, and a packaged plugin; it is not itself a rendering engine.
 
-## Обязательный рабочий процесс
-1. Определи задачу, площадку, ориентацию, длительность и формат результата.
-2. Изучи исходные файлы и референсы. Не выдумывай содержание речи, визуальные детали и таймкоды.
-3. Найди подходящие Skills в `.agents/skills`, прочитай их SKILL.md и необходимые references.
-4. Выбери минимально достаточный совместимый набор. Не смешивай движки без причины.
-5. Подготовь визуальную концепцию, монтажный план с таймкодами и раскадровку.
-6. Покажи раскадровку до финального рендера и дождись подтверждения.
-7. После подтверждения выполни монтаж, промежуточный просмотр, QA и экспорт.
+## Mandatory workflow
+1. Identify deliverable, platform, aspect ratio, duration, source files, and reference.
+2. Inspect the actual source media and repository files. Never invent speech, visuals, timecodes, or source assets.
+3. Read SKILL-INDEX.md and inspect the relevant .agents/skills/<name>/SKILL.md files.
+4. Select the smallest compatible set of skills. Prefer one primary rendering engine per project.
+5. Explain selected skills and dependencies.
+6. Prepare a timecoded edit plan and visual storyboard/contact sheet from actual source frames where possible.
+7. Obtain approval before final rendering unless the user explicitly waives approval.
+8. Render a short proof for complex motion, inspect it, then render the final output.
+9. Verify the exported file and report exactly what was and was not checked.
 
-Если пользователь просит только анализ или план, не монтируй. Если пользователь явно просит пропустить согласование и сразу рендерить, следуй этому запросу.
+## Visual quality
+- Preserve source color, exposure, skin tones, and sound unless changes are requested.
+- Keep faces, hands, and meaningful gestures clear.
+- Use contemporary, readable typography and strong contrast.
+- Avoid heavy strokes, opaque caption slabs, clutter, and dated effects unless requested.
+- Use subtle shadow or minimal outline only when needed for readability.
+- Motion should support meaning, rhythm, or a sound event, not decorate randomly.
+- Apply platform-specific safe zones; do not invent exact measurements.
 
-## Выбор Skills
-- Начинай с `SKILL-INDEX.md` и `HOW-TO-CHOOSE.md`.
-- Читай полный SKILL.md, references и связанные скрипты.
-- Проверяй зависимости, версии, лицензии и доступность инструментов в текущей среде.
-- Не заявляй, что навык установлен или проверен, пока это не подтверждено.
-- Если Skill отсутствует, предложи альтернативу и обозначь её как собственную реализацию.
-- Сохраняй авторство и лицензии внешних проектов.
+## Speech and sound
+- Keep the original meaning and wording.
+- Remove pauses, repetitions, or stumbles only when requested or approved.
+- Do not add music/SFX unless requested or approved.
+- Verify audio continuity, sync, clipping, and intelligibility.
 
-## Стандарт визуального качества Matveeva Polly
+## Engine selection
+- Remotion: React-driven video compositions, captions, sequences, and rendering.
+- GSAP: animation timelines and web-based motion components.
+- HyperFrames: only when its workflow matches the project.
+- Howseen Motion Design: HTML + Playwright + FFmpeg workflow.
+- Product Launch Motion: choose V1 or V2 based on the actual brief.
+- mult-marketing: only for the author's animated family-character series.
+Do not combine engines without a clear technical reason.
 
-### Цвет и изображение
-- Сохраняй исходную цветопередачу, естественные оттенки кожи и динамику изображения.
-- Не допускай случайного пересвета, чрезмерной насыщенности, клиппинга и непреднамеренного изменения контраста.
-- Не меняй цветовой профиль без технической необходимости.
-- Не применяй LUT или автоматическую цветокоррекцию, заметно меняющую исходник, без согласования.
-- Проверяй цвет после экспорта.
+## Environment honesty
+- Check actual Node, package manager, FFmpeg, browser, fonts, codecs, and installed packages before rendering.
+- A skill file does not install its runtime dependencies.
+- Never claim a skill is tested or available in Cloud without a real check in that environment.
+- Never claim an export is complete until the output file exists and playback has been verified.
 
-### Типографика
-- Используй современные читаемые гарнитуры и ясную иерархию.
-- Обеспечивай достаточный контраст текста с фоном.
-- По умолчанию предпочитай мягкую тень или едва заметную обводку, если они нужны для читаемости.
-- Не используй тяжёлые обводки, массивные подложки и устаревшие декоративные приёмы без прямого запроса.
-- Не закрывай лицо и важные объекты.
-
-### Motion design
-- Каждое движение должно поддерживать смысл, ритм речи или музыкальный акцент.
-- Используй современные переходы, выразительную типографику и продуманные композиции.
-- Не добавляй эффекты ради количества.
-- Сохраняй единую визуальную систему ролика.
-- Явные пожелания пользователя и выбранный референс имеют приоритет над общими рекомендациями.
-
-### Safe zones
-- Определи площадку до размещения текста.
-- Учитывай интерфейс площадки и не размещай важные элементы под кнопками, описанием, аватаром и панелями.
-- Не используй одну схему safe zones для всех платформ.
-- Если точные актуальные значения не подтверждены, используй консервативные отступы и обозначь допущение.
-- Проверяй финальный кадр на мобильном экране.
-
-## Раскадровка до рендера
-Для каждого фрагмента укажи:
-- таймкод исходника;
-- подтверждённое содержимое сцены;
-- композицию и крупность;
-- текст заголовков и субтитров;
-- motion-приём и Skill;
-- звук и акценты;
-- ограничения по лицу и safe zones.
-
-По возможности создай визуальный contact sheet с кадрами из исходника. Для сложных роликов подготовь low-resolution animatic. Не называй текстовую таблицу визуальной раскадровкой, если изображения не созданы. Не выдумывай кадры и таймкоды.
-
-## Исходники и звук
-- Сохраняй смысл речи и синхронизацию губ с аудио.
-- Удаляй паузы, оговорки и повторы только по запросу или после согласования.
-- Не меняй скорость речи без запроса.
-- Сохраняй разборчивость голоса, избегай скачков громкости и клиппинга.
-- Не добавляй музыку и звуковые эффекты без запроса или подтверждения.
-
-## Техническая реализация
-- Проверь среду, версии инструментов и доступные команды.
-- Не предполагай, что локальные программы доступны в Codex Cloud.
-- Устанавливай только необходимые зависимости.
-- Для Remotion следуй актуальной документации и выбранному Skill.
-- Не запускай ресурсоёмкий финальный рендер до утверждения раскадровки, если пользователь не распорядился иначе.
-
-## QA перед выдачей
-Проверь соответствие запросу, текст и тайминги, синхронизацию, читаемость, safe zones, цветопередачу, лицо, артефакты, звук, формат, разрешение, FPS и воспроизведение файла.
-
-## Экспорт
-Если не указано иное, для короткого вертикального видео используй MP4/H.264, 1080×1920, 9:16, 30 FPS. Сохраняй исходный FPS, если это лучше для задачи. Для горизонтального видео параметры согласуй с исходником и запросом.
-
-## Принцип
-Библиотека — набор инструментов, а не обещание, что каждый Skill подходит каждой задаче. Выбирай осмысленно и проверяй результат.
+## Export
+Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 9:16, 30 fps, while preserving source FPS when appropriate.
