@@ -3,6 +3,17 @@
 ## Goal
 Create clear, modern videos for Reels, Shorts, TikTok, and YouTube. Explain decisions plainly for beginners. This repository contains skills and references; it is not itself a rendering engine.
 
+## Mandatory context budget and routing (takes precedence over workflow below)
+- Read SKILL-INDEX.md once per task/session if routing is needed. Do not recursively read, concatenate, summarize, or preload all skills, examples, references, or engine documentation.
+- For a local change to existing code, inspect only the relevant component and its direct dependencies; no skill reload unless required.
+- For a new task select one primary skill and engine (if needed). Read only its SKILL.md; follow only the specific linked section/file required for the current operation. Add another skill only for a distinct requested operation or concrete blocker; state why in one line.
+- Captions-only: reuse valid transcript or obtain word timestamps if needed; use only the selected engine's caption instructions. Do not load speech-cutting, directing, storyboard, reference, or motion skills unless requested.
+- Speech cleanup only: conversation-editing; no animation engine unless needed for export.
+- Do not dump media metadata, transcripts, logs, source trees or large files into context. Use targeted queries and bounded excerpts; keep full intermediate artifacts on disk.
+- Check only prerequisites of the selected operation. Reuse valid results. After two unsuccessful attempts at the same blocker, stop repeating and report the specific blocker and next viable option.
+- These rules constrain reading and tool output, not correctness: perform necessary validation and preserve user approval requirements.
+- Report selected skills, additional reads and reason, reused artifacts, and unresolved blockers briefly. Do not invent token savings or usage metrics.
+
 ## Workflow
 1. Identify the deliverable, platform, aspect ratio, target duration, source media, reference, and requested speech edits.
 2. Verify the actual files available in the current workspace before analysis. Prefer attached/current-workspace files and discoverable project files over guessed paths or filenames.
