@@ -176,6 +176,9 @@ Simple edits with explicitly approved settings can skip the direction gate, but 
 
 ## Routing
 
+- Post-analysis production brief and Codex handoff: reels-production-brief. Use only after source/reference analysis is available; reuse saved analysis and do not repeat transcription or reference inspection.
+
+
 - Speech cuts/continuity: `conversation-editing`.
 - Reference analysis: `reference-fidelity`.
 - Face/crop/masks/foreground separation: `face-preservation`.
