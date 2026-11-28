@@ -7,6 +7,19 @@ description: Main production orchestrator for Reels. Intake source footage, opti
 
 Use for end-to-end Reels editing when the user supplies source footage, optionally a reference video and/or additional assets. This is the main entry point; it routes to specialist skills instead of loading every skill.
 
+## FAST PATH — default for ordinary Reels
+
+Most participant videos are simple talking-head edits. Prefer the shortest working route:
+1. Reuse the current Reels-studio project and its last known-good render command.
+2. Reuse existing transcript/word timestamps and caption components when available. Transcribe only if no valid transcript exists for this source.
+3. Read the user's brief and source once. Make a compact beat list; do not create a full storyboard, asset database, or multi-stage approval package unless the brief needs it.
+4. Choose at most 1–3 relevant motion components and only the transitions/sounds that add meaning. A clean cut and existing captions are valid design choices.
+5. Read only the one relevant Remotion reference for the implementation. Do not reload all Remotion skills or inspect the entire repository.
+6. Do not run environment/version/dependency audits on each video. Trust the cached known-good setup; investigate only a concrete error or a newly required feature.
+7. For ordinary, already-tested components, implement and render directly when the user requests the edit. Use a short proof only for a new, risky, or unverified effect.
+8. After a visual revision, reuse transcript and edit timing. Change only the relevant component/parameters and rerender the affected section when reliable.
+9. Validate output existence, decode, dimensions, and duration. Do not run expensive broad QA unless requested or an issue is suspected.
+
 ## Operating principles
 
 1. **Source-first.** The supplied footage, speech, reference, and user assets are the only factual sources. Never invent quotes, results, screenshots, logos, product UI, or visual evidence.
@@ -41,7 +54,7 @@ projects/<project-id>/
 
 ## Phase 2. Capability and engine check
 
-Check the current environment once per new/changed project, then cache the report:
+Check the current environment once during initial setup, then cache the report. On subsequent videos, skip this section unless a concrete failure occurs or the user requests a feature requiring a new dependency:
 - FFmpeg and ffprobe availability/version and required codecs/filters.
 - Python environment and the actual speech package/model available.
 - Remotion project, installed package version, available composition entry point, and render command.
@@ -141,12 +154,12 @@ Before coding, name the chosen component IDs and map each to the exact source mo
 
 ## Phase 7. Approval gates
 
-Use the following gates; combine them only when the user explicitly requests autonomous execution and risk is low.
+Use approval gates only for consequential uncertainty. Routine choices should not interrupt the workflow:
 
-1. **Edit gate:** show proposed removals/reorders with timecodes and reasons. Approval required for meaning-changing or ambiguous edits.
-2. **Direction gate:** show concise storyboard/beat map, selected effects, transitions, and sound plan. Ask only about real choices.
-3. **Proof gate:** render the most technically difficult or representative 5–10 seconds. Inspect it before full render.
-4. **Final gate:** after full export, provide the file and a truthful QA report.
+1. **Edit gate:** approval is required only for meaning-changing or ambiguous speech cuts.
+2. **Direction gate:** skip for ordinary edits with a clear brief; use a short beat list internally.
+3. **Proof gate:** use only for new, risky, or unverified effects.
+4. **Final gate:** provide the export and a concise truthful QA note.
 
 Simple edits with explicitly approved settings can skip the direction gate, but not basic validation.
 
