@@ -3,77 +3,246 @@
   "$id": "https://github.com/polzheltukhina-ai/matveeva-polly-skills/schemas/edit-plan.schema.json",
   "title": "Matveeva Polly Reels Edit Plan",
   "type": "object",
-  "required": ["schema_version", "project", "source", "format", "engine", "beats", "approvals"],
+  "required": [
+    "schema_version",
+    "project",
+    "source",
+    "format",
+    "engine",
+    "beats",
+    "approvals"
+  ],
   "properties": {
-    "schema_version": { "type": "string", "const": "1.0" },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
     "project": {
       "type": "object",
-      "required": ["id"],
+      "required": [
+        "id"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "title": { "type": "string" },
-        "brand_file": { "type": ["string", "null"] },
-        "asset_catalog": { "type": ["string", "null"] }
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "brand_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "asset_catalog": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "source": {
       "type": "object",
-      "required": ["video"],
+      "required": [
+        "video"
+      ],
       "properties": {
-        "video": { "type": "string" },
-        "sha256": { "type": ["string", "null"] },
-        "transcript": { "type": ["string", "null"] },
-        "word_timestamps": { "type": ["string", "null"] },
-        "reference_video": { "type": ["string", "null"] },
-        "reference_analysis": { "type": ["string", "null"] },
-        "edit_decision_list": { "type": ["string", "null"] }
+        "video": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcript": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "word_timestamps": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference_video": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference_analysis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "edit_decision_list": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "format": {
       "type": "object",
-      "required": ["width", "height", "fps", "container"],
+      "required": [
+        "width",
+        "height",
+        "fps",
+        "container"
+      ],
       "properties": {
-        "width": { "type": "integer", "minimum": 1 },
-        "height": { "type": "integer", "minimum": 1 },
-        "fps": { "type": "number", "exclusiveMinimum": 0 },
-        "container": { "type": "string" },
-        "video_codec": { "type": ["string", "null"] },
-        "audio_codec": { "type": ["string", "null"] },
-        "target_duration_seconds": { "type": ["number", "null"], "minimum": 0 }
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "container": {
+          "type": "string"
+        },
+        "video_codec": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "audio_codec": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target_duration_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
       },
       "additionalProperties": true
     },
     "engine": {
       "type": "object",
-      "required": ["primary"],
+      "required": [
+        "primary"
+      ],
       "properties": {
-        "primary": { "type": "string", "enum": ["remotion", "hyperframes", "html-gsap", "ffmpeg-only", "other"] },
-        "version": { "type": ["string", "null"] },
-        "verified": { "type": "boolean", "default": false },
-        "reason": { "type": "string" },
-        "supporting_tools": { "type": "array", "items": { "type": "string" } }
+        "primary": {
+          "type": "string",
+          "enum": [
+            "remotion",
+            "hyperframes",
+            "html-gsap",
+            "ffmpeg-only",
+            "other"
+          ]
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verified": {
+          "type": "boolean",
+          "default": false
+        },
+        "reason": {
+          "type": "string"
+        },
+        "supporting_tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": true
     },
     "speech": {
       "type": "object",
       "properties": {
-        "edit_policy": { "type": "string", "enum": ["preserve", "long-pauses", "clean-approved", "specified-cuts", "select-takes", "reorder", "unspecified"] },
-        "approved_drops": { "type": "array", "items": { "$ref": "#/$defs/timeRange" } },
-        "speed": { "type": ["number", "null"], "exclusiveMinimum": 0 },
-        "transcription_engine": { "type": ["string", "null"] },
-        "transcription_model": { "type": ["string", "null"] },
-        "transcript_status": { "type": "string", "enum": ["missing", "valid", "needs-review", "invalid"] }
+        "edit_policy": {
+          "type": "string",
+          "enum": [
+            "preserve",
+            "long-pauses",
+            "clean-approved",
+            "specified-cuts",
+            "select-takes",
+            "reorder",
+            "unspecified"
+          ]
+        },
+        "approved_drops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/timeRange"
+          }
+        },
+        "speed": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "transcription_engine": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcription_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcript_status": {
+          "type": "string",
+          "enum": [
+            "missing",
+            "valid",
+            "needs-review",
+            "invalid"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "brand_constraints": {
       "type": "object",
       "properties": {
-        "must_follow": { "type": "array", "items": { "type": "string" } },
-        "must_not_use": { "type": "array", "items": { "type": "string" } }
+        "must_follow": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_not_use": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": true
     },
@@ -81,12 +250,34 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["feature", "decision", "reason"],
+        "required": [
+          "feature",
+          "decision",
+          "reason"
+        ],
         "properties": {
-          "feature": { "type": "string" },
-          "decision": { "type": "string", "enum": ["keep", "adapt", "exclude"] },
-          "reason": { "type": "string" },
-          "confidence": { "type": "string", "enum": ["observed", "estimated", "uncertain"] }
+          "feature": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "adapt",
+              "exclude"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "observed",
+              "estimated",
+              "uncertain"
+            ]
+          }
         },
         "additionalProperties": true
       }
@@ -95,52 +286,350 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "start", "end", "intent"],
+        "required": [
+          "id",
+          "start",
+          "end",
+          "intent"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "start": { "type": "number", "minimum": 0 },
-          "end": { "type": "number", "exclusiveMinimum": 0 },
-          "intent": { "type": "string" },
-          "spoken_anchor": { "type": ["string", "null"] },
-          "component_ids": { "type": "array", "items": { "type": "string" } },
-          "transition_id": { "type": ["string", "null"] },
-          "assets": { "type": "array", "items": { "type": "string" } },
-          "sfx": { "type": "array", "items": { "type": "string" } },
-          "notes": { "type": "string" }
+          "id": {
+            "type": "string"
+          },
+          "start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "intent": {
+            "type": "string"
+          },
+          "spoken_anchor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "component_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sfx": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          },
+          "sound_events": {
+            "type": "array",
+            "description": "Structured SFX events tied to a visual event or spoken anchor. Optional for backward compatibility with the sfx string array.",
+            "items": {
+              "type": "object",
+              "required": [
+                "event_id",
+                "visual_event"
+              ],
+              "properties": {
+                "event_id": {
+                  "type": "string"
+                },
+                "visual_event": {
+                  "type": "string"
+                },
+                "spoken_anchor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "audio_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "start_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "duration_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "gain_db": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "fade_in_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "fade_out_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "rights_status": {
+                  "type": "string",
+                  "enum": [
+                    "cleared",
+                    "user-confirmed",
+                    "unknown",
+                    "not-applicable"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "planned",
+                    "selected",
+                    "rendered",
+                    "listened",
+                    "needs-review"
+                  ]
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
         },
         "additionalProperties": true
       }
     },
     "music": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
-        "file": { "type": ["string", "null"] },
-        "source": { "type": ["string", "null"] },
-        "rights_status": { "type": "string", "enum": ["cleared", "user-confirmed", "unknown", "not-applicable"] },
-        "gain_db": { "type": ["number", "null"] },
-        "ducking": { "type": ["boolean", "null"] }
+        "file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rights_status": {
+          "type": "string",
+          "enum": [
+            "cleared",
+            "user-confirmed",
+            "unknown",
+            "not-applicable"
+          ]
+        },
+        "gain_db": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ducking": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "approvals": {
       "type": "object",
-      "required": ["edit", "direction", "proof", "final"],
+      "required": [
+        "edit",
+        "direction",
+        "proof",
+        "final"
+      ],
       "properties": {
-        "edit": { "type": "string", "enum": ["pending", "approved", "not-required"] },
-        "direction": { "type": "string", "enum": ["pending", "approved", "not-required"] },
-        "proof": { "type": "string", "enum": ["pending", "approved", "not-required"] },
-        "final": { "type": "string", "enum": ["pending", "approved"] }
+        "edit": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "not-required"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "not-required"
+          ]
+        },
+        "proof": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "not-required"
+          ]
+        },
+        "final": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved"
+          ]
+        }
       },
       "additionalProperties": true
     },
-    "qa": { "type": "object", "additionalProperties": true }
+    "qa": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "audio_library": {
+      "type": "object",
+      "description": "Project-local reference to an existing audio library and its index; never store library assets in this shared skills repository.",
+      "properties": {
+        "library_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "root_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "index_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "inventory_status": {
+          "type": "string",
+          "enum": [
+            "not-checked",
+            "indexed",
+            "stale",
+            "unavailable"
+          ]
+        },
+        "rights_status": {
+          "type": "string",
+          "enum": [
+            "cleared",
+            "user-confirmed",
+            "unknown",
+            "mixed",
+            "not-applicable"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "caption_style": {
+      "type": "object",
+      "description": "Creator-specific caption rules; do not assume a universal caption color or active-word highlight.",
+      "properties": {
+        "color_mode": {
+          "type": "string",
+          "enum": [
+            "brand-defined",
+            "monochrome-adaptive",
+            "fixed-color",
+            "other"
+          ]
+        },
+        "active_word_highlight": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shadow_or_glow": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "stroke": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "plate": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "safe_zone_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
   },
   "$defs": {
     "timeRange": {
       "type": "array",
       "prefixItems": [
-        { "type": "number", "minimum": 0 },
-        { "type": "number", "exclusiveMinimum": 0 }
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
       ],
       "minItems": 2,
       "maxItems": 2
