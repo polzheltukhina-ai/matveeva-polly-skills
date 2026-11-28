@@ -187,3 +187,36 @@ Simple edits with explicitly approved settings can skip the direction gate, but 
 - Final review: `visual-quality`.
 
 Do not preload all specialist skills. State selected skills and why briefly.
+
+
+## Proven production rules — motion, captions and sound
+
+Apply these as review rules, not as a reason to over-engineer every Reel:
+
+### Motion rhythm
+- Review the timeline for meaningful visual change at roughly 2–3 second intervals when the speech and scene support it.
+- A change can be a camera/reframe move, scale change, text entrance, insert, graphic movement, UI state change, transition, or deliberate return to stillness.
+- This is a pacing heuristic, not a mandatory effect quota. Do not add random zooms or motion to quiet/emotional lines.
+- Avoid holding one illustrative UI insert unchanged for a long stretch. Develop the same scene through distinct meaningful states, or replace a repeated insert with a different visual explanation.
+- Do not reuse the same interface composition twice in one Reel unless repetition is an intentional motif. Vary the visual treatment while keeping the overall motion grammar coherent.
+
+### Speech-anchored reframing
+- Anchor major layout changes to the exact spoken phrase using existing word timestamps.
+- Keep the original composition until the anchor phrase begins; do not start the reframe early because the next scene is planned.
+- Treat multi-stage reframing as a sequence when required: full frame → new layout → return to full frame → next layout. Do not skip a requested intermediate state.
+- Use easing and coordinated layer movement so the subject's position/scale changes feel continuous. Preserve face, headroom, hands and gestures; never shrink the speaker merely to make room for graphics when the brief requires a large subject.
+
+### Typography and captions
+- Treat persistent captions, kinetic headline typography, and information overlays as separate systems.
+- Persistent captions follow the creator's brand guide and must remain readable against the local video background. Do not impose a universal active-word color, stroke, plate, or animation style.
+- If the creator requests monochrome captions, choose black or white according to local contrast; subtle shadow/glow may be used only when allowed by the creator's constraints. Do not add a colored active-word highlight.
+- Kinetic typography may use more expressive motion, scale, masks and hierarchy, but its wording must be grounded in the actual speech or approved copy. Never render production placeholders as final text.
+- Check caption grouping and safe placement through all reframes; captions must not cover the face or compete with a headline.
+
+### Sound design selection
+- When sound is requested, read `references/sound-design-library.md` and inspect the actual configured project library before choosing cues.
+- Select and listen to a small shortlist; do not guess sound files from filenames alone or scan the entire library on every revision.
+- Build a sound-event map tied to visual events and speech anchors. A visual movement does not automatically require a sound.
+- Avoid repeating the same generic whoosh/pop for every event. Use a small coherent palette with intentional variation; silence is valid.
+- Do not add music unless approved. Preserve meaningful original sounds when requested.
+- Report separately which checks were automated and which cues were actually listened to.
