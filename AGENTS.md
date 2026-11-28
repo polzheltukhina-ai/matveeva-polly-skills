@@ -5,6 +5,7 @@ Create clear, modern videos for Reels, Shorts, TikTok, and YouTube. Explain deci
 
 ## Mandatory context budget and routing (takes precedence over workflow below)
 - Read SKILL-INDEX.md once per task/session if routing is needed. Do not recursively read, concatenate, summarize, or preload all skills, examples, references, or engine documentation.
+- For a full Reels editing request, select `reels-production-director` as the primary skill. It orchestrates source intake, optional reference/assets, edit plan, engine selection, approved component selection, execution, iteration, and QA.
 - For a local change to existing code, inspect only the relevant component and its direct dependencies; no skill reload unless required.
 - For a new task select one primary skill and engine (if needed). Read only its SKILL.md; follow only the specific linked section/file required for the current operation. Add another skill only for a distinct requested operation or concrete blocker; state why in one line.
 - Captions-only: reuse valid transcript or obtain word timestamps if needed; use only the selected engine's caption instructions. Do not load speech-cutting, directing, storyboard, reference, or motion skills unless requested.
@@ -58,12 +59,13 @@ If the user has not specified, inspect the source and recommend a conservative e
 - Avoid duplicate renders, redundant intermediate files, unnecessary parallel heavy processes, and speculative effect experiments.
 
 ## Engine selection
-- Remotion: React-driven video compositions, captions, sequences, and rendering.
-- GSAP: animation timelines and web-based motion components.
-- HyperFrames: only when its workflow matches the project.
+- Remotion: React-driven video compositions, captions, sequences, and rendering; preferred default when the existing project is working.
+- HyperFrames: use only when its workflow, CLI, version, and actual render path are verified in the current project.
+- GSAP: animation timelines and web-based motion components where the deterministic render path is confirmed.
 - Howseen Motion Design: HTML + Playwright + FFmpeg workflow.
 - Product Launch Motion: choose V1 or V2 based on the actual brief.
 - mult-marketing: only for the author's animated family-character series.
+- Faster-Whisper: use the project's existing local speech workflow when available; do not add Groq as a default provider.
 Do not combine engines without a clear technical reason.
 
 ## Environment honesty and QA
@@ -75,4 +77,4 @@ Do not combine engines without a clear technical reason.
 - Check export dimensions, frame rate, codec, duration, full-file decoding, subtitle timing/safe zones, audio sync/continuity/clipping, and requested visual constraints as applicable.
 
 ## Export
-Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 9:16, 30 fps, while preserving source FPS when appropriate.
+Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 30 fps, while preserving source FPS when appropriate.
