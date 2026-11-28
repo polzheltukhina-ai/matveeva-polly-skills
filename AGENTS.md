@@ -5,12 +5,13 @@ Create clear, modern videos for Reels, Shorts, TikTok, and YouTube. Explain deci
 
 ## Mandatory context budget and routing (takes precedence over workflow below)
 - Read SKILL-INDEX.md once per task/session if routing is needed. Do not recursively read, concatenate, summarize, or preload all skills, examples, references, or engine documentation.
+- For a full Reels editing request, select `reels-production-director` as the primary skill. After source/reference analysis is complete and the user needs a handoff brief for Codex, select `reels-production-brief` as the second-stage skill; reuse saved analysis and do not repeat it. Use its FAST PATH for ordinary talking-head Reels: reuse the existing project, transcript, caption component, and render command; choose a few matching library components; make only targeted edits. Do not create a heavyweight production dossier.
 - For a local change to existing code, inspect only the relevant component and its direct dependencies; no skill reload unless required.
 - For a new task select one primary skill and engine (if needed). Read only its SKILL.md; follow only the specific linked section/file required for the current operation. Add another skill only for a distinct requested operation or concrete blocker; state why in one line.
 - Captions-only: reuse valid transcript or obtain word timestamps if needed; use only the selected engine's caption instructions. Do not load speech-cutting, directing, storyboard, reference, or motion skills unless requested.
 - Speech cleanup only: conversation-editing; no animation engine unless needed for export.
 - Do not dump media metadata, transcripts, logs, source trees or large files into context. Use targeted queries and bounded excerpts; keep full intermediate artifacts on disk.
-- Check only prerequisites of the selected operation. Reuse valid results. After two unsuccessful attempts at the same blocker, stop repeating and report the specific blocker and next viable option.
+- FAST PATH (default): do not run environment audits, dependency inventories, version scans, full source-tree listings, contact sheets, or broad QA on every video. Trust the last known-good project setup and run only the render/build command needed for the requested edit. Recheck a dependency only when a concrete error or newly requested feature requires it. After one clear failure, inspect that error; do not repeat broad checks. Stop after two attempts at the same blocker.
 - These rules constrain reading and tool output, not correctness: perform necessary validation and preserve user approval requirements.
 - Report selected skills, additional reads and reason, reused artifacts, and unresolved blockers briefly. Do not invent token savings or usage metrics.
 
@@ -21,10 +22,10 @@ Create clear, modern videos for Reels, Shorts, TikTok, and YouTube. Explain deci
 4. Inspect the actual source media. Never invent speech, visuals, timecodes, or source assets.
 5. Read SKILL-INDEX.md and only the relevant skill instructions. Select the smallest compatible set and one primary rendering engine.
 6. Reuse existing project setup, dependencies, transcripts, edit plans, assets, and components when their source inputs and requirements have not changed.
-7. Analyze the reference and source once. Save reusable outputs (transcript, edit decision list, reference analysis, storyboard, configuration) in the project.
-8. Present the proposed edit plan and resolve only decisions that cannot be inferred safely.
-9. Obtain approval before final rendering unless the user explicitly waives approval. For complex or unproven effects, render a short representative proof first.
-10. Verify the final export and state exactly which checks were automated, visually inspected, listened to, or not performed.
+7. Analyze only what the requested edit needs. Reuse a saved transcript/reference note when available. For a simple talking-head Reel, use a compact beat list instead of a full storyboard.
+8. Give a short edit summary and ask only about meaning-changing speech cuts, ambiguous source material, or a genuinely consequential design choice. Otherwise proceed using the user's brief.
+9. Do not require approval gates for routine choices. Make a proof only for a new, risky, or technically unverified effect; otherwise render the requested result directly when asked.
+10. Run lightweight output validation (file exists, decode succeeds, expected dimensions/duration). Perform deeper visual/audio QA only when requested or when a visible/audio issue is suspected.
 
 ## Source-footage and speech-edit decisions
 Do not assume every talking-head source is already clean or that every source needs cutting. Establish the requested treatment explicitly:
@@ -48,8 +49,8 @@ If the user has not specified, inspect the source and recommend a conservative e
 - Use the user's stated safe zones and typography. Do not invent exact measurements when unspecified.
 
 ## Environment and resource efficiency
-- Check only the dependencies needed for the selected engine and requested effects.
-- Do not perform a full environment inventory on every new video. Recheck only when setup is new, changed, or failing.
+- FAST PATH: trust the existing known-good dependencies and do not check them again unless a concrete error requires it.
+- Never perform a full environment inventory per video. Cache one environment check per machine/project; recheck only after setup changes or a concrete failure.
 - A skill file does not install its runtime dependencies.
 - Do not install packages or switch engines without a concrete need and user awareness.
 - Do not repeat transcription, reference analysis, contact sheets, or setup checks when source files and relevant settings are unchanged and valid saved outputs exist.
@@ -58,12 +59,13 @@ If the user has not specified, inspect the source and recommend a conservative e
 - Avoid duplicate renders, redundant intermediate files, unnecessary parallel heavy processes, and speculative effect experiments.
 
 ## Engine selection
-- Remotion: React-driven video compositions, captions, sequences, and rendering.
-- GSAP: animation timelines and web-based motion components.
-- HyperFrames: only when its workflow matches the project.
+- Remotion: React-driven video compositions, captions, sequences, and rendering; preferred default when the existing project is working.
+- HyperFrames: use only when its workflow, CLI, version, and actual render path are verified in the current project.
+- GSAP: animation timelines and web-based motion components where the deterministic render path is confirmed.
 - Howseen Motion Design: HTML + Playwright + FFmpeg workflow.
 - Product Launch Motion: choose V1 or V2 based on the actual brief.
 - mult-marketing: only for the author's animated family-character series.
+- Faster-Whisper: use the project's existing local speech workflow when available; do not add Groq as a default provider.
 Do not combine engines without a clear technical reason.
 
 ## Environment honesty and QA
@@ -75,4 +77,4 @@ Do not combine engines without a clear technical reason.
 - Check export dimensions, frame rate, codec, duration, full-file decoding, subtitle timing/safe zones, audio sync/continuity/clipping, and requested visual constraints as applicable.
 
 ## Export
-Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 9:16, 30 fps, while preserving source FPS when appropriate.
+Follow the user brief. If unspecified for a vertical short, propose MP4/H.264, 1080×1920, 30 fps, while preserving source FPS when appropriate.

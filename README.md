@@ -27,3 +27,14 @@ bash .matveeva-cache/sync-skills.sh
 ## Старый способ
 
 Копии через Use this template и ранее установленные .agents/skills не обновляются автоматически. Для перехода используйте централизованное подключение и не загружайте дублирующие старые навыки. Не удаляйте пользовательские файлы автоматически.
+
+## Быстрый тест новой Reels-архитектуры (feature branch)
+
+Чтобы протестировать новую маршрутизацию, не сливая её в main:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/polzheltukhina-ai/matveeva-polly-skills/reels-production-v2/scripts/sync-skills.sh -o .matveeva-cache/sync-skills.sh
+MATVEEVA_REF=reels-production-v2 bash .matveeva-cache/sync-skills.sh
+```
+
+Затем в Codex попросите прочитать только `AGENTS.md`, `SKILL-INDEX.md` и `.agents/skills/reels-production-director/SKILL.md` из выведенного `LIBRARY`. Для обычного теста используйте FAST PATH: не делайте полный аудит среды, не повторяйте транскрибацию при наличии актуального `public/words.json`, не создавайте каталог эффектов с нуля. Сначала проверьте монтаж на существующей композиции и последнем известном рабочем render-команде. Это тест навыка и маршрутизации, не подтверждение, что все motion-эффекты уже реализованы.
