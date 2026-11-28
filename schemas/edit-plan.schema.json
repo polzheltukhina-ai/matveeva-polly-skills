@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/polzheltukhina-ai/matveeva-polly-skills/schemas/edit-plan.schema.json",
+  "title": "Matveeva Polly Reels Edit Plan",
+  "type": "object",
+  "required": ["schema_version", "project", "source", "format", "engine", "beats", "approvals"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "project": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "brand_file": { "type": ["string", "null"] },
+        "asset_catalog": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "required": ["video"],
+      "properties": {
+        "video": { "type": "string" },
+        "sha256": { "type": ["string", "null"] },
+        "transcript": { "type": ["string", "null"] },
+        "word_timestamps": { "type": ["string", "null"] },
+        "reference_video": { "type": ["string", "null"] },
+        "reference_analysis": { "type": ["string", "null"] },
+        "edit_decision_list": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "format": {
+      "type": "object",
+      "required": ["width", "height", "fps", "container"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "fps": { "type": "number", "exclusiveMinimum": 0 },
+        "container": { "type": "string" },
+        "video_codec": { "type": ["string", "null"] },
+        "audio_codec": { "type": ["string", "null"] },
+        "target_duration_seconds": { "type": ["number", "null"], "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "engine": {
+      "type": "object",
+      "required": ["primary"],
+      "properties": {
+        "primary": { "type": "string", "enum": ["remotion", "hyperframes", "html-gsap", "ffmpeg-only", "other"] },
+        "version": { "type": ["string", "null"] },
+        "verified": { "type": "boolean", "default": false },
+        "reason": { "type": "string" },
+        "supporting_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "speech": {
+      "type": "object",
+      "properties": {
+        "edit_policy": { "type": "string", "enum": ["preserve", "long-pauses", "clean-approved", "specified-cuts", "select-takes", "reorder", "unspecified"] },
+        "approved_drops": { "type": "array", "items": { "$ref": "#/$defs/timeRange" } },
+        "speed": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "transcription_engine": { "type": ["string", "null"] },
+        "transcription_model": { "type": ["string", "null"] },
+        "transcript_status": { "type": "string", "enum": ["missing", "valid", "needs-review", "invalid"] }
+      },
+      "additionalProperties": true
+    },
+    "brand_constraints": {
+      "type": "object",
+      "properties": {
+        "must_follow": { "type": "array", "items": { "type": "string" } },
+        "must_not_use": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "reference_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["feature", "decision", "reason"],
+        "properties": {
+          "feature": { "type": "string" },
+          "decision": { "type": "string", "enum": ["keep", "adapt", "exclude"] },
+          "reason": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["observed", "estimated", "uncertain"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "beats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "intent"],
+        "properties": {
+          "id": { "type": "string" },
+          "start": { "type": "number", "minimum": 0 },
+          "end": { "type": "number", "exclusiveMinimum": 0 },
+          "intent": { "type": "string" },
+          "spoken_anchor": { "type": ["string", "null"] },
+          "component_ids": { "type": "array", "items": { "type": "string" } },
+          "transition_id": { "type": ["string", "null"] },
+          "assets": { "type": "array", "items": { "type": "string" } },
+          "sfx": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "music": {
+      "type": ["object", "null"],
+      "properties": {
+        "file": { "type": ["string", "null"] },
+        "source": { "type": ["string", "null"] },
+        "rights_status": { "type": "string", "enum": ["cleared", "user-confirmed", "unknown", "not-applicable"] },
+        "gain_db": { "type": ["number", "null"] },
+        "ducking": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "approvals": {
+      "type": "object",
+      "required": ["edit", "direction", "proof", "final"],
+      "properties": {
+        "edit": { "type": "string", "enum": ["pending", "approved", "not-required"] },
+        "direction": { "type": "string", "enum": ["pending", "approved", "not-required"] },
+        "proof": { "type": "string", "enum": ["pending", "approved", "not-required"] },
+        "final": { "type": "string", "enum": ["pending", "approved"] }
+      },
+      "additionalProperties": true
+    },
+    "qa": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "timeRange": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "number", "minimum": 0 },
+        { "type": "number", "exclusiveMinimum": 0 }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "additionalProperties": true
+}
